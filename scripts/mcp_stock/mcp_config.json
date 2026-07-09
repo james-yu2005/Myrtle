@@ -1,9 +1,0 @@
-{
-  "mcpServers": {
-    "stock-lookup": {
-      "type": "stdio",
-      "command": "python3",
-      "args": ["stock_mcp.py"]
-    }
-  }
-}

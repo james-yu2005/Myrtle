@@ -16,7 +16,6 @@ set(SOURCES "audio/audio_codec.cc"
             "display/display.cc"
             "display/lcd_display.cc"
             "display/turtle_scene.cc"
-            "display/oled_display.cc"
             "display/lvgl_display/lvgl_display.cc"
             "display/emote_display.cc"
             "display/lvgl_display/emoji_collection.cc"
@@ -46,27 +45,14 @@ set(INCLUDE_DIRS "." "display" "display/lvgl_display" "display/lvgl_display/jpg"
 list(APPEND SOURCES
     "boards/common/board.cc"
     "boards/common/wifi_board.cc"
-    "boards/common/ml307_board.cc"
-    "boards/common/nt26_board.cc"
-    "boards/common/dual_network_board.cc"
-    "boards/common/adc_battery_monitor.cc"
     "boards/common/afsk_demod.cc"
     "boards/common/axp2101.cc"
     "boards/common/backlight.cc"
-    "boards/common/button.cc"
     "boards/common/i2c_device.cc"
-    "boards/common/knob.cc"
     "boards/common/power_save_timer.cc"
-    "boards/common/press_to_talk_mcp_tool.cc"
     "boards/common/focus_controller.cc"
     "boards/common/focus_presence.cc"
-    "boards/common/sleep_timer.cc"
-    "boards/common/sy6970.cc"
-    "boards/common/system_reset.cc"
 )
-if(CONFIG_XIAOZHI_USE_ETHERNET)
-    list(APPEND SOURCES "boards/common/ethernet_board.cc")
-endif()
 list(APPEND INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/boards/common)
 
 
@@ -237,30 +223,9 @@ endif()
 
 file(GLOB COMMON_SOUNDS ${CMAKE_CURRENT_SOURCE_DIR}/assets/common/*.ogg)
 
-# If target chip is ESP32, exclude specific files to avoid build errors
-if(CONFIG_IDF_TARGET_ESP32)
-    list(REMOVE_ITEM SOURCES "audio/codecs/box_audio_codec.cc"
-                             "audio/codecs/es8388_audio_codec.cc"
-                             "audio/codecs/es8389_audio_codec.cc"
-                             "led/gpio_led.cc"
-                             "display/lvgl_display/jpg/image_to_jpeg.cpp"
-                             "display/lvgl_display/jpg/jpeg_to_image.c"
-                             "boards/common/nt26_board.cc"
-                             "boards/common/ml307_board.cc"
-                             "boards/common/dual_network_board.cc"
-                             )
-endif()
-
-# Include EspVideo if target is ESP32S3 or ESP32P4
-if(CONFIG_IDF_TARGET_ESP32S3 OR CONFIG_IDF_TARGET_ESP32P4)
-    list(APPEND SOURCES "boards/common/esp_video.cc"
-                        "boards/common/rndis_board.cc"
-                        )
-endif()
-
-# Include Esp32Camera if target is ESP32S3
+# Include EspVideo for M5Stack Core S3 camera
 if(CONFIG_IDF_TARGET_ESP32S3)
-    list(APPEND SOURCES "boards/common/esp32_camera.cc")
+    list(APPEND SOURCES "boards/common/esp_video.cc")
 endif()
 
 set(MAIN_PRIV_REQUIRES_EXTRA "")

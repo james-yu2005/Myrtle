@@ -1,0 +1,15 @@
+Desk Chat
+=========
+
+This project is a modified fork of the XiaoZhi ESP32 voice assistant firmware,
+customized for the M5Stack Core S3.
+
+Upstream project:
+  https://github.com/78/xiaozhi-esp32
+
+The upstream codebase is licensed under the MIT License. See LICENSE for the
+full license text.
+
+Desk Chat includes original modifications (focus timer, turtle UI, board
+trimming, and related changes) distributed under the same MIT terms as the
+upstream project.
