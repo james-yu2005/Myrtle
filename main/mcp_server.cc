@@ -9,6 +9,7 @@
 #include <algorithm>
 #include <cstring>
 #include <esp_pthread.h>
+#include <thread>
 
 #include "application.h"
 #include "display.h"
@@ -542,8 +543,36 @@ void McpServer::DoToolCall(int id, const std::string& tool_name, const cJSON* to
         return;
     }
 
-    // Use main thread to call the tool
     auto& app = Application::GetInstance();
+
+    // Keep network-bound search off the main loop so a slow/hung HTTP call
+    // cannot freeze audio/UI after the cloud MCP timeout (~10s).
+    if (tool_name == "self.search.web") {
+        esp_pthread_cfg_t cfg = esp_pthread_get_default_config();
+        cfg.stack_size = 12 * 1024;
+        cfg.prio = 5;
+        cfg.thread_name = "mcp_search";
+        esp_pthread_set_cfg(&cfg);
+        std::thread([this, id, tool_iter, arguments = std::move(arguments), &app]() {
+            std::string result;
+            std::string error;
+            try {
+                result = (*tool_iter)->Call(arguments);
+            } catch (const std::exception& e) {
+                error = e.what();
+                ESP_LOGE(TAG, "tools/call: %s", error.c_str());
+            }
+            app.Schedule([this, id, result = std::move(result), error = std::move(error)]() {
+                if (!error.empty()) {
+                    ReplyError(id, error);
+                } else {
+                    ReplyResult(id, result);
+                }
+            });
+        }).detach();
+        return;
+    }
+
     app.Schedule([this, id, tool_iter, arguments = std::move(arguments)]() {
         try {
             ReplyResult(id, (*tool_iter)->Call(arguments));

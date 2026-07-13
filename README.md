@@ -9,7 +9,9 @@ Connects to [xiaozhi.me](https://xiaozhi.me) for speech, LLM, and TTS. On-device
 - Wake word: **"hi nova"**
 - Turtle ocean UI
 - Focus / Pomodoro timer with desk-presence camera monitoring
-- MCP: `self.focus.start`, `self.focus.stop`, `self.focus.status`
+- On-device web search via Tavily (`self.search.web`) — no Mac MCP host required
+- MCP: `self.focus.start`, `self.focus.stop`, `self.focus.status`, `self.search.web`
+- Optional cloud MCP: Tapo lights ([setup](scripts/mcp_tapo/README.md))
 
 ## Build & flash (Mac)
 
@@ -33,6 +35,9 @@ Requires ESP-IDF **v5.5.2+**, CMake, and Ninja.
 ## Docs
 
 - [MCP usage](docs/mcp-usage.md)
+- [On-device Tavily search](docs/tavily-search.md)
+- [Tapo lights MCP setup](scripts/mcp_tapo/README.md)
+- [Cloud MCP integrations plan](docs/mcp-cloud-integrations.md)
 - [WebSocket protocol](docs/websocket.md)
 
 ## License

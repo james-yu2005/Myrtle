@@ -18,3 +18,6 @@ main/mmap_generate_emoji.h
 *.bin
 mmap_generate_*.h
 .clangd
+scripts/mcp_search/.env
+scripts/mcp_tapo/.env
+scripts/mcp_tapo/.venv/

@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "tavily-search": {
+      "command": "npx",
+      "args": ["-y", "tavily-mcp@latest"],
+      "env": {
+        "DEFAULT_PARAMETERS": "{\"search_depth\": \"advanced\", \"max_results\": 10, \"include_images\": false}"
+      }
+    }
+  }
+}

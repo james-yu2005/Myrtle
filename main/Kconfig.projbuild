@@ -623,4 +623,14 @@ menu "TAIJIPAI_S3_CONFIG"
         å¯åŠ¨åŒå£°é“
 endmenu
 
+menu "Web Search (Tavily)"
+    config TAVILY_API_KEY
+        string "Tavily API key"
+        default ""
+        help
+            API key from https://app.tavily.com/ (tvly-...).
+            Used by the on-device self.search.web MCP tool.
+            You can also set it at runtime via self.search.set_api_key (stored in NVS).
+endmenu
+
 endmenu

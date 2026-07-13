@@ -52,6 +52,7 @@ list(APPEND SOURCES
     "boards/common/power_save_timer.cc"
     "boards/common/focus_controller.cc"
     "boards/common/focus_presence.cc"
+    "boards/common/search_controller.cc"
 )
 list(APPEND INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/boards/common)
 

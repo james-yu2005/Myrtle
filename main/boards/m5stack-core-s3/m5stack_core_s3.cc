@@ -7,6 +7,7 @@
 #include "i2c_device.h"
 #include "axp2101.h"
 #include "focus_controller.h"
+#include "search_controller.h"
 
 #include <esp_log.h>
 #include <driver/i2c_master.h>
@@ -344,6 +345,7 @@ public:
         InitializeFt6336TouchPad();
         GetBacklight()->RestoreBrightness();
         FocusController::GetInstance().Initialize();
+        SearchController::GetInstance().Initialize();
     }
 
     virtual AudioCodec* GetAudioCodec() override {

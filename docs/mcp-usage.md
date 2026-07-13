@@ -107,7 +107,12 @@ A tool registered this way will not appear in a regular `tools/list` response. T
 | `self.screen.set_theme` | Switch UI theme (`theme`: `"light"` or `"dark"`), when LVGL is enabled. |
 | `self.camera.take_photo` | Take a picture with the on-board camera (when the board has one) and answer the given `question` about it. |
 
-Board-specific tools are appended after these by each board's `InitializeTools()`.
+Board-specific tools (M5Stack Core S3) are registered at board init:
+
+| Tool | Description |
+|------|-------------|
+| `self.focus.start` / `stop` / `status` | Focus / Pomodoro timer with desk-presence monitoring. |
+| `self.search.web` | Live web search via Tavily REST API (`query`, optional `max_results`). No Mac MCP host required. |
 
 ### User-only tools - from `AddUserOnlyTools`
 
@@ -122,6 +127,8 @@ These tools are hidden by default. The backend must pass `withUserTools=true` to
 | `self.screen.snapshot` | Snapshot the screen as JPEG and upload it to `url` (LVGL boards, when `CONFIG_LV_USE_SNAPSHOT=y`). |
 | `self.screen.preview_image` | Download and display an image from `url` on the screen. |
 | `self.assets.set_download_url` | Set the download URL for the assets partition. |
+| `self.search.set_api_key` | Store Tavily API key in NVS (M5Stack Core S3). |
+| `self.search.status` | Whether a Tavily key is configured (does not return the key). |
 
 ## JSON-RPC Examples
 

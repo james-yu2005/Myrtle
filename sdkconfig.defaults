@@ -80,3 +80,7 @@ CONFIG_LV_USE_WIN=n
 CONFIG_LV_BUILD_EXAMPLES=n
 CONFIG_LV_BUILD_DEMOS=n
 
+# Optional: bake Tavily key into firmware via sdkconfig
+# Or set at runtime via self.search.set_api_key.
+# CONFIG_TAVILY_API_KEY="tvly-..."
+
