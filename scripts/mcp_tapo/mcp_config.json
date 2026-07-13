@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "tapo-lights": {
+      "command": "python3",
+      "args": ["server.py"]
+    }
+  }
+}
