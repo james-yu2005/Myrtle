@@ -25,3 +25,7 @@ scripts/mcp_tapo/.venv/
 scripts/mcp_notion/.env
 scripts/mcp_notion/.venv/
 scripts/mcp_notion/.mcp-auth/
+scripts/mcp_google_calendar/.env
+scripts/mcp_google_calendar/.venv/
+scripts/mcp_google_calendar/.google-token.json
+scripts/mcp_google_calendar/credentials.json

@@ -1,13 +1,13 @@
 # Cloud MCP Integrations
 
-Desk Chat uses three Mac-side MCP bridges over the xiaozhi WebSocket endpoint.
+Desk Chat uses Mac-side MCP bridges over the xiaozhi WebSocket endpoint.
 On-device tools (focus, camera, screen, speaker) stay in firmware.
 
 ```
 You (voice) → Desk Chat (ESP32) → xiaozhi.me → LLM
                                       ↓
                         Cloud MCP bridges on Mac
-                        (search / Notion / Tapo)
+                        (search / Notion / Calendar / Tapo)
 ```
 
 ## Bridges
@@ -16,6 +16,7 @@ You (voice) → Desk Chat (ESP32) → xiaozhi.me → LLM
 |-------------|--------|-------|
 | Tavily web search | Working | [`scripts/mcp_search/`](../scripts/mcp_search/README.md) |
 | Notion notes | Working (limit OAuth to **Desk Chat Notes**) | [`scripts/mcp_notion/`](../scripts/mcp_notion/README.md) |
+| Google Calendar | Working (OAuth Desktop client) | [`scripts/mcp_google_calendar/`](../scripts/mcp_google_calendar/README.md) |
 | Tapo lights | Working (LAN required) | [`scripts/mcp_tapo/`](../scripts/mcp_tapo/README.md) |
 
 ## Shared requirements
@@ -30,6 +31,7 @@ You (voice) → Desk Chat (ESP32) → xiaozhi.me → LLM
 ```bash
 ./scripts/mcp_search/start.sh
 ./scripts/mcp_notion/start.sh
+./scripts/mcp_google_calendar/start.sh
 ./scripts/mcp_tapo/start.sh
 ```
 
