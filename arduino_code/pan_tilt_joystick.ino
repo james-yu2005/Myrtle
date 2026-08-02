@@ -15,7 +15,7 @@ float tiltAngle = 90;
 const int CENTER_X = 526; 
 const int CENTER_Y = 508;  
 const int CENTER_DEADZONE = 20;   
-const float MAX_SPEED = 5.0;     
+const float MAX_SPEED = 3.0;     
 
 void setup() {
   Serial.begin(9600);
@@ -31,7 +31,7 @@ void loop() {
 
   int xOffset = x - CENTER_X;
   if (abs(xOffset) > CENTER_DEADZONE) {
-    float speed = map(xOffset, -512, 512, -MAX_SPEED, MAX_SPEED);
+    float speed = map(xOffset, -512, 512, MAX_SPEED, -MAX_SPEED);
     panAngle += speed;
     panAngle = constrain(panAngle, 0, 90);
     panServo.write((int)panAngle);
@@ -39,7 +39,7 @@ void loop() {
 
   int yOffset = y - CENTER_Y;
   if (abs(yOffset) > CENTER_DEADZONE) {
-    float speed = map(yOffset, -512, 512, -MAX_SPEED, MAX_SPEED);
+    float speed = map(yOffset, -512, 512, MAX_SPEED, -MAX_SPEED);
     tiltAngle += speed;
     tiltAngle = constrain(tiltAngle, 0, 180);
     tiltServo.write((int)tiltAngle);
