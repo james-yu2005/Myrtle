@@ -1,4 +1,4 @@
-# Desk Chat
+# Myrtle
 
 Voice AI desk assistant for **M5Stack Core S3** (ESP32-S3).
 
