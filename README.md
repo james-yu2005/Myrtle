@@ -4,7 +4,7 @@ Voice AI desk assistant for **M5Stack Core S3** (ESP32-S3).
 
 Connects to [xiaozhi.me](https://xiaozhi.me) for speech, LLM, and TTS. On-device MCP controls the speaker, screen, camera, and focus timer. Cloud MCP bridges on a Mac add web search, Notion notes, Google Calendar, and Tapo lights.
 
-Demo: https://drive.google.com/drive/folders/1IlDqskuTuBkrtfLz0PAOH1rQauz5ByKw?dmr=1&ec=wgc-drive-%5Bmodule%5D-goto
+Video Demo: https://drive.google.com/drive/folders/1IlDqskuTuBkrtfLz0PAOH1rQauz5ByKw?dmr=1&ec=wgc-drive-%5Bmodule%5D-goto
 
 ## Features
 
